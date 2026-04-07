@@ -1,0 +1,205 @@
+/* ------------------------------
+   PALETTE & TIPOGRAFIA
+--------------------------------*/
+body {
+    font-family: "Georgia", serif;
+    background: url("/static/sfondo.jpg") center center / cover fixed no-repeat;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #4a3f35;
+    position: relative;
+}
+
+/* Leggero velo per migliorare la leggibilità */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 250, 240, 0.55); /* un velo caldo e leggero */
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* ------------------------------
+   TITOLO
+--------------------------------*/
+h1 {
+    margin-top: 40px;
+    font-size: 36px;
+    letter-spacing: 1px;
+    color: #3b332c;
+    text-shadow: 0 1px 0 #fff;
+}
+
+/* ------------------------------
+   PAGINE DEL DIARIO
+--------------------------------*/
+.page {
+    margin: 40px auto;
+    width: 60%;
+    background: #fffdf8;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #d8c9b6;
+
+    /* Ombra morbida */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+    /* Leggera texture carta */
+    background-image: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)),
+                      url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+}
+
+.single-page img {
+      width: 50%;
+    margin: 0 auto;
+    display: block;
+
+    border-radius: 8px;
+    border: 1px solid #c7b89d;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ------------------------------
+   NAVIGAZIONE
+--------------------------------*/
+.nav-buttons {
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    padding: 10px 22px;
+    background-color: #d9c7a3;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #3b332c;
+    margin: 0 10px;
+    display: inline-block;
+    border: 1px solid #c7b89d;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background-color: #cbb796;
+    transform: translateY(-2px);
+}
+
+/* ------------------------------
+   BOTTONE ELIMINA
+--------------------------------*/
+.delete-btn {
+    margin-top: 12px;
+    background-color: #b86a6a;
+    color: white;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #a85c5c;
+    transform: translateY(-2px);
+}
+
+/* ------------------------------
+   PAGINA “+” PER AGGIUNGERE
+--------------------------------*/
+.add-cross {
+    font-size: 90px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    color: #c7b89d;
+    cursor: pointer;
+    transition: 0.2s;
+    margin-top: 20px;
+}
+
+.add-cross:hover {
+    transform: scale(1.15);
+    color: #b39f82;
+}
+
+/* ------------------------------
+   DIDASCALIE
+--------------------------------*/
+.caption-box {
+    margin-top: 18px;
+}
+
+.caption-text {
+    font-style: italic;
+    color: #6b5e4a;
+    font-size: 16px;
+}
+
+.edit-caption-btn,
+.save-caption-btn {
+    margin-top: 10px;
+    padding: 6px 14px;
+    background-color: #d9c7a3;
+    border: 1px solid #c7b89d;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.edit-caption-btn:hover,
+.save-caption-btn:hover {
+    background-color: #cbb796;
+}
+
+.caption-input {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #c7b89d;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-family: inherit;
+}
+
+/* ------------------------------
+   HOME BUTTON (se usato)
+--------------------------------*/
+.home-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #d9c7a3;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #3b332c;
+    font-weight: bold;
+    border: 1px solid #c7b89d;
+    transition: 0.2s;
+}
+
+.home-btn:hover {
+    background-color: #cbb796;
+    transform: translateY(-2px);
+}
+
+.btn,
+.delete-btn,
+.edit-caption-btn,
+.save-caption-btn,
+.home-btn {
+    border: 1px solid rgba(0, 0, 0, 0.35); /* bordo nero sottile e morbido */
+}
+
+.add-cross {
+    border: 1px solid rgba(0, 0, 0, 0.25); /* leggerissimo per non appesantire */
+    border-radius: 50%;
+    padding: 4px 14px;
+}

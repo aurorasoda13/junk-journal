@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diario di {{ utente }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+
+</head>
+<body>
+<a href="/" class="home-btn">Home</a>
+
+    <h1>Diario di {{ utente }}</h1>
+
+    <!-- PAGINE SINGOLE -->
+    {% for img in pagine %}
+        {% if loop.first %}
+        <div class="page single-page diary-page" id="page{{ loop.index0 }}">
+        {% else %}
+        <div class="page single-page diary-page" id="page{{ loop.index0 }}" style="display:none;">
+        {% endif %}
+
+            <img src="/image/{{ img[0] }}" alt="{{ img[1] }}">
+            <div class="caption-box">
+    <p class="caption-text">{{ img[2] if img|length > 2 else "" }}</p>
+
+    <button class="edit-caption-btn">Modifica</button>
+
+    <form class="caption-form" action="/diario/{{ utente }}/caption/{{ img[0] }}" method="POST" style="display:none;">
+        <input type="text" name="caption" class="caption-input" value="{{ img[2] if img|length > 2 else "" }}">
+        <button type="submit" class="save-caption-btn">Salva</button>
+    </form>
+</div>
+
+
+            <form action="/delete/{{ img[0] }}" method="POST">
+                <button class="delete-btn">Elimina</button>
+            </form>
+        </div>
+        
+    {% endfor %}
+
+    <!-- NAVIGAZIONE -->
+    {% if pagine %}
+    <div class="nav-buttons">
+        <button class="btn" id="prevBtn">← Pagina precedente</button>
+        <button class="btn" id="nextBtn">Pagina successiva →</button>
+    </div>
+    {% endif %}
+
+    <!-- AGGIUNGI NUOVA PAGINA -->
+    <!-- PAGINA FINALE: AGGIUNGI NUOVA PAGINA -->
+<div class="page single-page diary-page" id="addPage" style="display:none;">
+    <button id="addButton" class="add-cross">+</button>
+
+    <form id="addForm" action="/diario/{{ utente }}/upload" method="POST" enctype="multipart/form-data" style="display:none;">
+        <input type="file" name="image" id="fileInput" required>
+    </form>
+</div>
+
+
+    <script src="{{ url_for('static', filename='diario.js') }}"></script>
+
+</body>
+</html>
