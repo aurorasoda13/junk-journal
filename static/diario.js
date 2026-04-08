@@ -73,3 +73,31 @@ document.querySelectorAll(".caption-box").forEach(box => {
         }
     });
 });
+// Mostra la modalità modifica
+document.querySelectorAll(".edit-caption-btn").forEach(btn => {
+    btn.addEventListener("click", function () {
+        const box = btn.closest(".caption-box");
+
+        box.querySelector(".caption-text").style.display = "none";
+        box.querySelector(".caption-form").style.display = "block";
+        box.querySelector(".delete-form").style.display = "block";
+
+        btn.style.display = "none";
+    });
+});
+
+// Overlay elimina
+document.querySelectorAll(".open-delete").forEach(btn => {
+    btn.addEventListener("click", function () {
+        const form = btn.closest("form");
+        const action = form.getAttribute("action");
+
+        document.getElementById("confirmDeleteForm").setAttribute("action", action);
+        document.getElementById("deleteOverlay").style.display = "flex";
+    });
+});
+
+// Chiudi overlay
+document.getElementById("cancelDelete").addEventListener("click", function () {
+    document.getElementById("deleteOverlay").style.display = "none";
+});
