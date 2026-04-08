@@ -44,7 +44,7 @@ def diario(utente):
 
     # Recupera immagini dell'utente
     cursor.execute("""
-        SELECT id, filename 
+        SELECT id, filename, didascalia
         FROM images 
         WHERE utente = %s
         ORDER BY id ASC
@@ -132,9 +132,5 @@ def delete_page(image_id):
     referer = request.headers.get("Referer")
     return redirect(referer or url_for("index"))
 
-import os
-
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
-
+    app.run(debug=True)
