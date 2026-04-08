@@ -21,23 +21,40 @@
 
             <img src="/image/{{ img[0] }}" alt="{{ img[1] }}">
             <div class="caption-box">
-    <p class="caption-text">{{ img[2] if img|length > 2 else "" }}</p>
+                <p class="caption-text">{{ img[2] if img|length > 2 else "" }}</p>
 
-    <button class="edit-caption-btn">Modifica</button>
+                <button class="edit-caption-btn">Aggiungi o modifica didascalia</button>
 
-    <form class="caption-form" action="/diario/{{ utente }}/caption/{{ img[0] }}" method="POST" style="display:none;">
-        <input type="text" name="caption" class="caption-input" value="{{ img[2] if img|length > 2 else "" }}">
-        <button type="submit" class="save-caption-btn">Salva</button>
-    </form>
-</div>
+                <form class="caption-form" action="/diario/{{ utente }}/didascalia/{{ img[0] }}" method="POST" style="display:none;">
+                    <input type="text" name="didascalia" class="caption-input" value="{{ img[2] if img|length > 2 else "" }}">
+                    <button type="submit" class="save-caption-btn">Salva</button>
+                </form>
+
+                <!-- Questo deve comparire solo in modalità modifica -->
+                <form action="/delete/{{ img[0] }}" method="POST" class="delete-form" style="display:none;">
+                    <button type="button" class="delete-btn open-delete">Elimina Pagina</button>
+                </form>
+            </div>
 
 
-            <form action="/delete/{{ img[0] }}" method="POST">
-                <button class="delete-btn">Elimina</button>
-            </form>
+
         </div>
         
     {% endfor %}
+    <div id="deleteOverlay" class="overlay" style="display:none;">
+    <div class="overlay-box">
+        <p>Sei sicuro di voler eliminare questa pagina?<br>
+        <strong>L'azione è irreversibile.</strong></p>
+
+        <div class="overlay-buttons">
+            <button id="cancelDelete" class="btn cancel-btn">Annulla</button>
+            <form id="confirmDeleteForm" method="POST">
+                <button type="submit" class="btn delete-btn">Elimina</button>
+            </form>
+        </div>
+    </div>
+</div>
+
 
     <!-- NAVIGAZIONE -->
     {% if pagine %}
